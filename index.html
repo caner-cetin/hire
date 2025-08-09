@@ -1,203 +1,288 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Caner Cetin // HIRE</title>
     <style>
-        /* --- 1-BIT PALETTE & CORE SETUP --- */
-        :root {
-            --bg: #222323;
-            --glow: #f0f6f0;
-            --accent: #39ff14; /* CRT green */
-            --meta: #888;      /* Muted gray for non-critical info */
-        }
+      :root {
+        --bg: #222323;
+        --glow: #f0f6f0;
+        --accent: #39ff14; /* CRT green */
+        --purple: #b19cd9; /* Purple for job titles */
+        --meta: #888; /* Muted gray for non-critical info */
+      }
 
-        html, body {
-            background-color: var(--bg);
-            color: var(--glow);
-            font-family: 'Courier New', monospace;
-            font-size: 16px;
-            line-height: 1.6;
-            margin: 0;
-            padding: 2rem 1rem;
-            display: flex;
-            justify-content: center;
-        }
-        
-        /* --- THE MAIN CONTAINER: THE "TERMINAL" --- */
+      html,
+      body {
+        background-color: var(--bg);
+        color: var(--glow);
+        font-family: "Courier New", monospace;
+        font-size: 16px;
+        line-height: 1.7; /* Increased from 1.6 */
+        margin: 0;
+        padding: 2rem 1rem;
+        display: flex;
+        justify-content: center;
+      }
+
+      .terminal {
+        width: 100%;
+        max-width: 700px; /* Slightly wider for better readability */
+        border: 1px solid var(--glow);
+        padding: 2rem; /* Increased padding */
+      }
+
+      h1,
+      p,
+      ul,
+      blockquote {
+        margin: 0;
+        padding: 0;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        text-align: center;
+        letter-spacing: 2px;
+      }
+
+      /* Improved paragraph spacing for readability */
+      p {
+        margin-bottom: 1rem; /* Add space between paragraphs */
+      }
+
+      p:last-child {
+        margin-bottom: 0;
+      }
+
+      .status {
+        text-align: center;
+        margin: 1rem 0;
+        font-weight: bold;
+      }
+
+      .status .dot {
+        display: inline-block;
+        width: 0.5em;
+        height: 0.5em;
+        background-color: var(--accent);
+        box-shadow: 0 0 5px var(--accent);
+        margin-right: 0.5em;
+      }
+
+      hr {
+        border: none;
+        border-top: 1px dashed var(--glow);
+        opacity: 0.5;
+        margin: 2rem 0; /* Increased from 1.5rem */
+      }
+
+      h2 {
+        font-size: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin: 0 0 1.5rem 0; /* Increased bottom margin */
+        text-align: center;
+      }
+
+      ul {
+        list-style-type: none;
+      }
+
+      .job-list li {
+        margin-bottom: 2.5rem; /* Increased spacing between jobs */
+        padding: 1rem 0; /* Add some padding for breathing room */
+      }
+
+      /* Better job title styling */
+      .job-title {
+        display: block;
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+        color: var(--purple);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      /* --- LINKS --- */
+      a {
+        color: var(--glow);
+        text-decoration: underline;
+        font-weight: bold;
+        transition: background-color 0.1s linear, color 0.1s linear;
+      }
+
+      a:hover {
+        background-color: var(--glow);
+        color: var(--bg);
+        text-decoration: none;
+      }
+
+      .main-links {
+        text-align: center;
+      }
+
+      .main-links a::before {
+        content: "[ ";
+      }
+      .main-links a::after {
+        content: " ]";
+      }
+      .main-links li {
+        margin-bottom: 0.75rem;
+      }
+
+      /* --- JOB & FEEDBACK STYLING --- */
+      .job-status {
+        color: var(--meta);
+        font-style: italic;
+        display: block;
+        margin-top: 1rem;
+        font-size: 0.9rem;
+      }
+
+      .job-feedback {
+        margin-top: 1rem; /* Increased from 0.75rem */
+        padding: 1rem; /* Increased padding */
+        border-left: 3px solid var(--meta); /* Slightly thicker border */
+        background-color: rgba(136, 136, 136, 0.1); /* Subtle background */
+        font-style: italic;
+        color: var(--meta);
+      }
+
+      .job-feedback strong {
+        color: var(--glow);
+        font-style: normal;
+      }
+
+      /* Better text flow for longer content */
+      .job-description {
+        text-align: left;
+      }
+
+      .job-description p + p {
+        margin-top: 0.75rem; /* Space between description paragraphs */
+      }
+
+      /* --- AUDIO EMBED STYLING --- */
+      .audio-section {
+        margin-top: 2rem;
+        text-align: center;
+      }
+
+      .audio-section p {
+        margin-bottom: 1rem;
+        font-style: italic;
+        color: var(--meta);
+      }
+
+      iframe {
+        border: 1px solid var(--glow);
+        background-color: var(--bg);
+      }
+
+      /* --- RESPONSIVE IMPROVEMENTS --- */
+      @media (max-width: 768px) {
         .terminal {
-            width: 100%;
-            max-width: 650px; /* Slightly wider for content */
-            border: 1px solid var(--glow);
-            padding: 1.5rem;
+          max-width: 100%;
+          padding: 1.5rem;
         }
 
-        /* --- TYPOGRAPHY & ELEMENTS --- */
-        h1, p, ul, blockquote {
-            margin: 0;
-            padding: 0;
+        body {
+          padding: 1rem 0.5rem;
         }
 
-        h1 {
-            font-size: 1.5rem;
-            text-transform: uppercase;
-            text-align: center;
-            letter-spacing: 2px;
+        iframe {
+          width: 100%;
+          max-width: 400px;
         }
-
-        .status {
-            text-align: center;
-            margin: 1rem 0;
-            font-weight: bold;
-        }
-
-        .status .dot {
-            display: inline-block;
-            width: 0.5em;
-            height: 0.5em;
-            background-color: var(--accent);
-            box-shadow: 0 0 5px var(--accent);
-            margin-right: 0.5em;
-        }
-
-        hr {
-            border: none;
-            border-top: 1px dashed var(--glow); /* Dashed for more of a retro feel */
-            opacity: 0.5;
-            margin: 1.5rem 0;
-        }
-
-        h2 {
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin: 0 0 1rem 0;
-        }
-
-        ul {
-            list-style-type: none;
-        }
-
-        .job-list li {
-            margin-bottom: 2rem;
-        }
-
-        /* --- LINKS --- */
-        a {
-            color: var(--glow);
-            text-decoration: underline;
-            font-weight: bold;
-            transition: background-color 0.1s linear, color 0.1s linear;
-        }
-
-        a:hover {
-            background-color: var(--glow);
-            color: var(--bg);
-            text-decoration: none;
-        }
-
-        .main-links a::before { content: '[ '; }
-        .main-links a::after { content: ' ]'; }
-        .main-links li { margin-bottom: 0.75rem; }
-
-        /* --- JOB & FEEDBACK STYLING --- */
-        .job-status {
-            color: var(--meta);
-            font-style: italic;
-            display: block;
-        }
-        
-        .job-feedback {
-            margin-top: 0.75rem;
-            padding-left: 1rem;
-            border-left: 2px solid var(--meta);
-            font-style: italic;
-            color: var(--meta);
-        }
-        
-        .job-feedback strong {
-            color: var(--glow);
-            font-style: normal;
-        }
-
-        /* --- YOUTUBE EMBED --- */
-        .video-wrapper {
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-            padding-top: 56.25%; /* 16:9 Aspect Ratio */
-            border: 1px solid var(--glow);
-        }
-
-        .video-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-        }
-
+      }
     </style>
-</head>
-<body>
-
+  </head>
+  <body>
     <main class="terminal">
+      <h1>Caner Cetin</h1>
+      <p style="text-align: center; color: var(--meta)">Backend & DevOps Engineer</p>
 
-        <h1>Caner Cetin</h1>
-        <p style="text-align:center; color: var(--meta);">Backend & DevOps</p>
-        
-        <p class="status">
-            <span class="dot"></span>AVAILABLE FOR HIRE
-        </p>
+      <p class="status"><span class="dot"></span>AVAILABLE FOR HIRE</p>
 
-        <hr>
+      <hr />
 
-        <ul class="main-links">
-            <li><a href="https://www.upwork.com/freelancers/~017d07cc0a3e9da33b" target="_blank" rel="noopener noreferrer">HIRE ON UPWORK</a></li>
-            <li><a href="https://github.com/caner-cetin" target="_blank" rel="noopener noreferrer">VIEW GITHUB</a></li>
-            <li><a href="https://resume.cansu.dev" target="_blank" rel="noopener noreferrer">VIEW RESUME</a></li>
-            <li><a href="mailto:hello@cansu.dev">SEND EMAIL</a></li>
-        </ul>
+      <ul class="main-links">
+        <li><a href="https://www.upwork.com/freelancers/~017d07cc0a3e9da33b" target="_blank" rel="noopener noreferrer">HIRE ON UPWORK</a></li>
+        <li><a href="https://github.com/caner-cetin" target="_blank" rel="noopener noreferrer">VIEW GITHUB</a></li>
+        <li><a href="https://resume.cansu.dev" target="_blank" rel="noopener noreferrer">VIEW RESUME</a></li>
+        <li><a href="mailto:hello@cansu.dev">SEND EMAIL</a></li>
+      </ul>
 
-        <hr>
+      <hr />
 
-        <h2>:: WORK HISTORY ::</h2>
-        
-        <ul class="job-list">
-            <!-- IN-PROGRESS JOB -->
-            <li>
-                <strong>C# Developer</strong>
-                <p>Refactoring a C-style C# backend for a high-traffic LLM data product. </p>
-                <span class="job-status">[IN-PROGRESS // Upwork]</span>
-            </li>
+      <h2>:: WORK HISTORY ::</h2>
 
-            <!-- COMPLETED JOB -->
-            <li>
-                <strong>Ansible Automation for Ghost CMS</strong>
-                <p>Developed an Ansible role to automate the deployment of Ghost CMS on a fresh Ubuntu EC2 instance, following existing project patterns.</p>
-                <div class="job-feedback">
-                    <p><strong>5.0/5.0 ★</strong> "Caner was prompt and knowledgable and completed this task efficiently and professionally."</p>
-                </div>
-                <span class="job-status">[COMPLETED: Jun 2025 // $20 Fixed-Price]</span>
-            </li>
-        </ul>
+      <ul class="job-list">
+        <li>
+          <strong class="job-title">Reverse-Engineer Hinge API</strong>
+          <div class="job-description">
+            <p>
+              4-phase contract focused on handling and automating authentication and anti-bot detection systems. Successfully completed Phase 1 and handed the
+              codebase to another reverse engineer for subsequent phases.
+            </p>
 
-        <hr>
+            <p>
+              Automated Android app authentication using Appium and WebdriverIO, utilizing Genymotion SaaS to spin up disposable emulators for testing and
+              development.
+            </p>
 
-        <div class="video-wrapper">
-            <iframe 
-                src="https://www.youtube.com/embed/7C01aEfni0M" 
-                title="YouTube video player" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                allowfullscreen>
-            </iframe>
-        </div>
+            <p>
+              Implemented device fingerprinting and anti-detection measures including modification of device properties, build configurations, and reducing
+              <i>emulator noise</i> to bypass recaptcha.
+            </p>
 
+            <p>
+              Handled Firebase's multi-layered security architecture designed to prevent authentication outside the intended application environment with
+              automation.
+            </p>
+          </div>
+          <span class="job-status">[COMPLETED: Aug 2025 // $140 Fixed Price]</span>
+        </li>
+
+        <li>
+          <strong class="job-title">C# Backend Developer</strong>
+          <div class="job-description">
+            <p>Refactoring and modernizing a legacy C-style C# backend system for a high-traffic LLM data processing product.</p>
+          </div>
+          <span class="job-status">[Upwork]</span>
+        </li>
+
+        <!-- COMPLETED JOB -->
+        <li>
+          <strong class="job-title">Ansible Automation for Ghost CMS</strong>
+          <div class="job-description">
+            <p>Developed Ansible role to automate the complete deployment pipeline of Ghost CMS on fresh Ubuntu EC2 instances.</p>
+          </div>
+          <div class="job-feedback">
+            <p><strong>5.0/5.0 ★</strong> "Caner was prompt and knowledgeable and completed this task efficiently and professionally."</p>
+          </div>
+          <span class="job-status">[COMPLETED: Jun 2025 // $20 Fixed-Price]</span>
+        </li>
+      </ul>
+
+      <hr />
+
+      <div class="audio-section">
+        <p>closing thoughts: listen gy!be</p>
+        <iframe
+          src="https://archive.org/embed/gybe2003-05-14.shnf/gybe2003-05-14d2t05.shn"
+          width="500"
+          height="30"
+          frameborder="0"
+          webkitallowfullscreen="true"
+          mozallowfullscreen="true"
+          allowfullscreen=""
+        ></iframe>
+      </div>
     </main>
-
-</body>
+  </body>
 </html>
