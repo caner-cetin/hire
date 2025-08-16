@@ -1,294 +1,362 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Caner Cetin // HIRE</title>
-    <style>
-      @font-face {
-        font-family: "IBM VGA 8x16";
-        src: url(Web437_MBytePC230_EGA.woff) format("woff");
-        font-weight: normal;
-        font-style: normal;
-      }
-      :root {
-        --bg: #222323;
-        --glow: #f0f6f0;
-        --accent: #39ff14; /* CRT green */
-        --purple: #b19cd9; /* Purple for job titles */
-        --meta: #888; /* Muted gray for non-critical info */
-      }
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Caner Cetin // HIRE</title>
+        <style>
+            @font-face {
+                font-family: "IBM VGA 8x16";
+                src: url(Web437_MBytePC230_EGA.woff) format("woff");
+                font-weight: normal;
+                font-style: normal;
+            }
+            :root {
+                --bg: #222323;
+                --glow: #f0f6f0;
+                --accent: #39ff14; /* CRT green */
+                --purple: #b19cd9; /* Purple for job titles */
+                --meta: #888; /* Muted gray for non-critical info */
+            }
 
-      html,
-      body {
-        background-color: var(--bg);
-        color: var(--glow);
-        font-family: "IBM VGA 8x16", monospace;
-        font-size: 16px;
-        line-height: 1.4; /* Increased from 1.6 */
-        margin: 0;
-        padding: 5rem 1rem;
-        display: flex;
-        justify-content: center;
-      }
+            html,
+            body {
+                background-color: var(--bg);
+                color: var(--glow);
+                font-family: "IBM VGA 8x16", monospace;
+                font-size: 16px;
+                line-height: 1.4; /* Increased from 1.6 */
+                margin: 0;
+                padding: 5rem 1rem;
+                display: flex;
+                justify-content: center;
+            }
 
-      .terminal {
-        width: 100%;
-        max-width: 700px; /* Slightly wider for better readability */
-        border: 1px solid var(--glow);
-        padding: 2rem; /* Increased padding */
-      }
+            .terminal {
+                width: 100%;
+                max-width: 700px; /* Slightly wider for better readability */
+                border: 1px solid var(--glow);
+                padding: 2rem; /* Increased padding */
+            }
 
-      h1,
-      p,
-      ul,
-      blockquote {
-        margin: 0;
-        padding: 0;
-      }
+            h1,
+            p,
+            ul,
+            blockquote {
+                margin: 0;
+                padding: 0;
+            }
 
-      h1 {
-        font-size: 1.5rem;
-        text-transform: uppercase;
-        text-align: center;
-        letter-spacing: 2px;
-      }
+            h1 {
+                font-size: 1.5rem;
+                text-transform: uppercase;
+                text-align: center;
+                letter-spacing: 2px;
+            }
 
-      /* Improved paragraph spacing for readability */
-      p {
-        margin-bottom: 1rem; /* Add space between paragraphs */
-      }
+            /* Improved paragraph spacing for readability */
+            p {
+                margin-bottom: 1rem; /* Add space between paragraphs */
+            }
 
-      p:last-child {
-        margin-bottom: 0;
-      }
+            p:last-child {
+                margin-bottom: 0;
+            }
 
-      .status {
-        text-align: center;
-        margin: 1rem 0;
-        font-weight: bold;
-      }
+            .status {
+                text-align: center;
+                margin: 1rem 0;
+                font-weight: bold;
+            }
 
-      .status .dot {
-        display: inline-block;
-        width: 0.5em;
-        height: 0.5em;
-        background-color: var(--accent);
-        box-shadow: 0 0 5px var(--accent);
-        margin-right: 0.5em;
-      }
+            .status .dot {
+                display: inline-block;
+                width: 0.5em;
+                height: 0.5em;
+                background-color: var(--accent);
+                box-shadow: 0 0 5px var(--accent);
+                margin-right: 0.5em;
+            }
 
-      hr {
-        border: none;
-        border-top: 1px dashed var(--glow);
-        opacity: 0.5;
-        margin: 2rem 0; /* Increased from 1.5rem */
-      }
+            hr {
+                border: none;
+                border-top: 1px dashed var(--glow);
+                opacity: 0.5;
+                margin: 2rem 0; /* Increased from 1.5rem */
+            }
 
-      h2 {
-        font-size: 1rem;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        margin: 0 0 1.5rem 0; /* Increased bottom margin */
-        text-align: center;
-      }
+            h2 {
+                font-size: 1rem;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                margin: 0 0 1.5rem 0; /* Increased bottom margin */
+                text-align: center;
+            }
 
-      ul {
-        list-style-type: none;
-      }
+            ul {
+                list-style-type: none;
+            }
 
-      .job-list li {
-        margin-bottom: 2.5rem; /* Increased spacing between jobs */
-        padding: 1rem 0; /* Add some padding for breathing room */
-      }
+            .job-list li {
+                margin-bottom: 2.5rem; /* Increased spacing between jobs */
+                padding: 1rem 0; /* Add some padding for breathing room */
+            }
 
-      /* Better job title styling */
-      .job-title {
-        display: block;
-        margin-bottom: 1rem;
-        font-size: 1.1rem;
-        color: var(--purple);
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-      }
+            /* Better job title styling */
+            .job-title {
+                display: block;
+                margin-bottom: 1rem;
+                font-size: 1.1rem;
+                color: var(--purple);
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+            }
 
-      /* --- LINKS --- */
-      a {
-        color: var(--glow);
-        text-decoration: underline;
-        font-weight: bold;
-        transition: background-color 0.1s linear, color 0.1s linear;
-      }
+            /* --- LINKS --- */
+            a {
+                color: var(--glow);
+                text-decoration: underline;
+                font-weight: bold;
+                transition:
+                    background-color 0.1s linear,
+                    color 0.1s linear;
+            }
 
-      a:hover {
-        background-color: var(--glow);
-        color: var(--bg);
-        text-decoration: none;
-      }
+            a:hover {
+                background-color: var(--glow);
+                color: var(--bg);
+                text-decoration: none;
+            }
 
-      .main-links {
-        text-align: center;
-      }
+            .main-links {
+                text-align: center;
+            }
 
-      .main-links a::before {
-        content: "[ ";
-      }
-      .main-links a::after {
-        content: " ]";
-      }
-      .main-links li {
-        margin-bottom: 0.75rem;
-      }
+            .main-links a::before {
+                content: "[ ";
+            }
+            .main-links a::after {
+                content: " ]";
+            }
+            .main-links li {
+                margin-bottom: 0.75rem;
+            }
 
-      /* --- JOB & FEEDBACK STYLING --- */
-      .job-status {
-        color: var(--meta);
-        font-style: italic;
-        display: block;
-        margin-top: 1rem;
-        font-size: 0.9rem;
-      }
+            /* --- JOB & FEEDBACK STYLING --- */
+            .job-status {
+                color: var(--meta);
+                font-style: italic;
+                display: block;
+                margin-top: 1rem;
+                font-size: 0.9rem;
+            }
 
-      .job-feedback {
-        margin-top: 1rem; /* Increased from 0.75rem */
-        padding: 1rem; /* Increased padding */
-        border-left: 3px solid var(--meta); /* Slightly thicker border */
-        background-color: rgba(136, 136, 136, 0.1); /* Subtle background */
-        font-style: italic;
-        color: var(--meta);
-      }
+            .job-feedback {
+                margin-top: 1rem; /* Increased from 0.75rem */
+                padding: 1rem; /* Increased padding */
+                border-left: 3px solid var(--meta); /* Slightly thicker border */
+                background-color: rgba(
+                    136,
+                    136,
+                    136,
+                    0.1
+                ); /* Subtle background */
+                font-style: italic;
+                color: var(--meta);
+            }
 
-      .job-feedback strong {
-        color: var(--glow);
-        font-style: normal;
-      }
+            .job-feedback strong {
+                color: var(--glow);
+                font-style: normal;
+            }
 
-      /* Better text flow for longer content */
-      .job-description {
-        text-align: left;
-      }
+            /* Better text flow for longer content */
+            .job-description {
+                text-align: left;
+            }
 
-      .job-description p + p {
-        margin-top: 0.75rem; /* Space between description paragraphs */
-      }
+            .job-description p + p {
+                margin-top: 0.75rem; /* Space between description paragraphs */
+            }
 
-      /* --- AUDIO EMBED STYLING --- */
-      .audio-section {
-        margin-top: 2rem;
-        text-align: center;
-      }
+            /* --- AUDIO EMBED STYLING --- */
+            .audio-section {
+                margin-top: 2rem;
+                text-align: center;
+            }
 
-      .audio-section p {
-        margin-bottom: 1rem;
-        font-style: italic;
-        color: var(--meta);
-      }
+            .audio-section p {
+                margin-bottom: 1rem;
+                font-style: italic;
+                color: var(--meta);
+            }
 
-      iframe {
-        border: 1px solid var(--glow);
-        background-color: var(--bg);
-      }
+            iframe {
+                border: 1px solid var(--glow);
+                background-color: var(--bg);
+            }
 
-      /* --- RESPONSIVE IMPROVEMENTS --- */
-      @media (max-width: 768px) {
-        .terminal {
-          max-width: 100%;
-          padding: 1.5rem;
-        }
+            /* --- RESPONSIVE IMPROVEMENTS --- */
+            @media (max-width: 768px) {
+                .terminal {
+                    max-width: 100%;
+                    padding: 1.5rem;
+                }
 
-        body {
-          padding: 1rem 0.5rem;
-        }
+                body {
+                    padding: 1rem 0.5rem;
+                }
 
-        iframe {
-          width: 100%;
-          max-width: 400px;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <main class="terminal">
-      <h1>Caner Cetin</h1>
-      <p style="text-align: center; color: var(--meta)">Backend & DevOps Engineer</p>
-
-      <p class="status"><span class="dot"></span>AVAILABLE FOR HIRE</p>
-
-      <hr />
-
-      <ul class="main-links">
-        <li><a href="https://www.upwork.com/freelancers/~017d07cc0a3e9da33b" target="_blank" rel="noopener noreferrer">HIRE ON UPWORK</a></li>
-        <li><a href="https://github.com/caner-cetin" target="_blank" rel="noopener noreferrer">VIEW GITHUB</a></li>
-        <li><a href="https://resume.cansu.dev" target="_blank" rel="noopener noreferrer">VIEW RESUME</a></li>
-        <li><a href="mailto:hello@cansu.dev">SEND EMAIL</a></li>
-      </ul>
-
-      <hr />
-
-      <h2>:: WORK HISTORY ::</h2>
-
-      <ul class="job-list">
-        <li>
-          <strong class="job-title">Reverse-Engineer Hinge API</strong>
-          <div class="job-description">
-            <p>
-              4-phase contract focused on building Hinge's unofficial API. Successfully completed Phase 1 and handed the codebase to another reverse engineer
-              for subsequent phases.
+                iframe {
+                    width: 100%;
+                    max-width: 400px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <main class="terminal">
+            <h1>Caner Cetin</h1>
+            <p style="text-align: center; color: var(--meta)">
+                Backend & DevOps Engineer
             </p>
 
-            <p>
-              Automated Android app authentication using Appium and WebdriverIO, utilizing Genymotion SaaS to spin up disposable emulators for testing and
-              development.
-            </p>
+            <p class="status"><span class="dot"></span>AVAILABLE FOR HIRE</p>
 
-            <p>
-              Implemented device fingerprinting and anti-detection measures including modification of device properties, build configurations, and reducing
-              <i>emulator noise</i> to bypass recaptcha.
-            </p>
+            <hr />
 
-            <p>
-              Handled Firebase's multi-layered security architecture designed to prevent authentication outside the intended application environment with
-              automation.
-            </p>
-          </div>
-          <span class="job-status">[COMPLETED: Aug 2025 // $140 Fixed Price]</span>
-        </li>
+            <ul class="main-links">
+                <li>
+                    <a
+                        href="https://www.upwork.com/freelancers/~017d07cc0a3e9da33b"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >HIRE ON UPWORK</a
+                    >
+                </li>
+                <li>
+                    <a
+                        href="https://github.com/caner-cetin"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >VIEW GITHUB</a
+                    >
+                </li>
+                <li>
+                    <a
+                        href="https://resume.cansu.dev"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >VIEW RESUME</a
+                    >
+                </li>
+                <li><a href="mailto:hello@cansu.dev">SEND EMAIL</a></li>
+            </ul>
 
-        <li>
-          <strong class="job-title">C# Backend Developer</strong>
-          <div class="job-description">
-            <p>Helped refactopring legacy C-style C# backend system for a high-traffic LLM data processing product.</p>
-          </div>
-          <span class="job-status">[Upwork]</span>
-        </li>
+            <hr />
 
-        <!-- COMPLETED JOB -->
-        <li>
-          <strong class="job-title">Ansible Automation for Ghost CMS</strong>
-          <div class="job-description">
-            <p>Developed Ansible role to automate the complete deployment pipeline of Ghost CMS on fresh Ubuntu EC2 instances.</p>
-          </div>
-          <div class="job-feedback">
-            <p><strong>5.0/5.0 ★</strong> "Caner was prompt and knowledgeable and completed this task efficiently and professionally."</p>
-          </div>
-          <span class="job-status">[COMPLETED: Jun 2025 // $20 Fixed-Price]</span>
-        </li>
-      </ul>
+            <h2>:: WORK HISTORY ::</h2>
 
-      <hr />
+            <ul class="job-list">
+                <li>
+                    <strong class="job-title">Scrape NewEra Products</strong>
+                    <div class="job-description">
+                        <p>
+                            Built a script for scraping NewEra catalog urls
+                            (search url etc) using Playwright with TS. Extracted
+                            all product information along with images and
+                            screenshots of gallery overviews.
+                        </p>
+                    </div>
+                    <span class="job-status">[COMPLETED: External Client]</span>
+                </li>
+                <li>
+                    <strong class="job-title"
+                        >Reverse-Engineer Hinge API</strong
+                    >
+                    <div class="job-description">
+                        <p>
+                            4-phase contract focused on building Hinge's
+                            unofficial API. Successfully completed Phase 1 and
+                            handed the codebase to another reverse engineer for
+                            subsequent phases.
+                        </p>
 
-      <div class="audio-section">
-        <p>closing thoughts: listen gy!be</p>
-        <iframe
-          src="https://archive.org/embed/gybe2003-05-14/gybe2003-05-14t05+-+World+Police.flac"
-          width="500"
-          height="30"
-          frameborder="0"
-          webkitallowfullscreen="true"
-          mozallowfullscreen="true"
-          allowfullscreen=""
-        ></iframe>
-      </div>
-    </main>
-  </body>
+                        <p>
+                            Automated Android app authentication using Appium
+                            and WebdriverIO, utilizing Genymotion SaaS to spin
+                            up disposable emulators for testing and development.
+                        </p>
+
+                        <p>
+                            Implemented device fingerprinting and anti-detection
+                            measures including modification of device
+                            properties, build configurations, and reducing
+                            <i>emulator noise</i> to bypass recaptcha.
+                        </p>
+
+                        <p>
+                            Handled Firebase's multi-layered security
+                            architecture designed to prevent authentication
+                            outside the intended application environment with
+                            automation.
+                        </p>
+                    </div>
+                    <span class="job-status"
+                        >[COMPLETED: Aug 2025 // $140 Fixed Price]</span
+                    >
+                </li>
+
+                <li>
+                    <strong class="job-title">C# Backend Developer</strong>
+                    <div class="job-description">
+                        <p>
+                            Helped refactopring legacy C-style C# backend system
+                            for a high-traffic LLM data processing product.
+                        </p>
+                    </div>
+                    <span class="job-status">[Upwork]</span>
+                </li>
+
+                <!-- COMPLETED JOB -->
+                <li>
+                    <strong class="job-title"
+                        >Ansible Automation for Ghost CMS</strong
+                    >
+                    <div class="job-description">
+                        <p>
+                            Developed Ansible role to automate the complete
+                            deployment pipeline of Ghost CMS on fresh Ubuntu EC2
+                            instances.
+                        </p>
+                    </div>
+                    <div class="job-feedback">
+                        <p>
+                            <strong>5.0/5.0 ★</strong> "Caner was prompt and
+                            knowledgeable and completed this task efficiently
+                            and professionally."
+                        </p>
+                    </div>
+                    <span class="job-status"
+                        >[COMPLETED: Jun 2025 // $20 Fixed-Price]</span
+                    >
+                </li>
+            </ul>
+
+            <hr />
+
+            <div class="audio-section">
+                <p>closing thoughts: listen gy!be</p>
+                <iframe
+                    src="https://archive.org/embed/gybe2000-11-20/07+3rd+Part.mp3"
+                    width="500"
+                    height="30"
+                    frameborder="0"
+                    webkitallowfullscreen="true"
+                    mozallowfullscreen="true"
+                    allowfullscreen=""
+                ></iframe>
+            </div>
+        </main>
+    </body>
 </html>
